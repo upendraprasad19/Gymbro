@@ -20,8 +20,18 @@ Verified on 22 October 2026 using the live local site in the Codex in-app browse
 
 ## Review artifacts
 
-`qa/desktop.png`, `qa/mobile.png`, `qa/fuel.png` and `qa/layout-checks.json` capture the local result and responsive checks.
+`qa/desktop.jpg`, `qa/mobile.jpg`, `qa/fuel.jpg` and `qa/layout-checks.json` capture the local result and responsive checks. `qa/github-pages-live.jpg` records the published website.
 
 ## Publication target
 
 The user approved the public GitHub repository **upendraprasad19/Gymbro** and its GitHub Pages preview on 22 October 2026. The Pages workflow checks JavaScript syntax and publishes only `dist/`. Deployment status is available in the repository's Actions tab. The separate local Sites configuration is excluded from the GitHub repository, and no credentials are saved to project files.
+
+## Published verification
+
+- Public repository: https://github.com/upendraprasad19/Gymbro
+- Published preview: https://upendraprasad19.github.io/Gymbro/
+- First deployed commit: `e02cd204c85a58330aa0ddd42c48e3c2a91d97f3`.
+- GitHub Actions run `39824862906` completed successfully.
+- Published page, application script and deadlift image returned HTTP 200.
+- Browser verification confirmed product details and a one-unit whey bag subtotal of ₹5,499 on the hosted site; browser console error/warning log was empty.
+- The site is still an interactive concept: no real bookings, orders or payments.

@@ -31,4 +31,4 @@ Local Sites configuration and the convenience ZIP archive are excluded from Git.
 
 ## Preview
 
-![GYMBRO desktop preview](qa/desktop.png)
+![GYMBRO desktop preview](qa/desktop.jpg)
