@@ -1,0 +1,9 @@
+# Local Sites configuration is separate from GitHub Pages.
+/.openai/
+/*.zip
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
