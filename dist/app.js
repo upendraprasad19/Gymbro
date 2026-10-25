@@ -57,9 +57,10 @@
   let scrollQueued = false;
   function syncScroll() {
     $('#header').classList.toggle('is-sticky', window.scrollY > 200 || !menu.hidden);
-    if (!reducedMotion.matches && window.scrollY < window.innerHeight * 1.1) {
-      $('.hero-image').style.translate = `0 ${Math.min(window.scrollY * .12, 100)}px`;
-    } else if (reducedMotion.matches) $('.hero-image').style.translate = '';
+    const heroImage = $('.hero-image');
+    if (heroImage && !reducedMotion.matches && window.scrollY < window.innerHeight * 1.1) {
+      heroImage.style.translate = `0 ${Math.min(window.scrollY * .12, 100)}px`;
+    } else if (heroImage && reducedMotion.matches) heroImage.style.translate = '';
     scrollQueued = false;
   }
   window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(syncScroll); } }, { passive: true });
@@ -160,7 +161,7 @@
     $('input[name="name"]').focus();
   }
   $$('[data-trial]').forEach(button => button.addEventListener('click', () => openTrial()));
-  $('#explore-plan').addEventListener('click', () => openTrial(plans[selectedPlan]));
+  $('#explore-plan')?.addEventListener('click', () => openTrial(plans[selectedPlan]));
   $('#trial-form').addEventListener('submit', event => {
     event.preventDefault();
     const form = event.currentTarget;
@@ -223,7 +224,7 @@
       const empty = document.createElement('div');
       empty.className = 'bag-empty';
       empty.innerHTML = '<h3>Room for your essentials.</h3><p>Explore the sample catalogue and add something to see how the bag works.</p><button class="button blue wide">Explore the fuel <span aria-hidden="true">↗</span></button>';
-      $('button', empty).addEventListener('click', () => { $('#bag-dialog').close(); $('#fuel').scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth' }); });
+      $('button', empty).addEventListener('click', () => { $('#bag-dialog').close(); if ($('#fuel')) $('#fuel').scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth' }); else window.location.href = 'fuel.html'; });
       container.append(empty);
     }
     let subtotal = 0;

@@ -1,0 +1,2 @@
+-- No people, credentials, results or staff accounts are seeded into the real service.
+-- The migration creates inactive event definitions only.

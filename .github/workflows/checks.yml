@@ -1,0 +1,29 @@
+name: Website checks
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install pinned dependencies
+        run: npm ci
+      - name: Build and test website
+        run: |
+          npm run bundle
+          npm run build
+          npm test
+          node --check dist/app.js
+          node --check dist/staff.js

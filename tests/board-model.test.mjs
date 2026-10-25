@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+const load=()=>import('../dist/board-model.mjs');
+const definitions=[{id:'deadlift',group:'strength',unit:'kg',comparison:'higher',label:'Deadlift',rulesVersion:1},{id:'row',group:'endurance',unit:'seconds',comparison:'lower',label:'500m row',rulesVersion:1}];
+const entry=(id,value,extra={})=>({id,definitionId:'deadlift',divisionId:'open',memberName:id,value,achievedOn:'2026-10-01',approvedAt:'2026-10-02',...extra});
+test('ignoresUnapproved and excludesWithdrawn',async()=>{const {groupRecords}=await load();const g=groupRecords([entry('ok',100),entry('pending',200,{state:'pending'}),entry('old',300,{state:'withdrawn'})],definitions);assert.deepEqual(g[0].leaders.map(x=>x.id),['ok']);});
+test('preservesTies and keepsBeatenHistory',async()=>{const {groupRecords}=await load();const g=groupRecords([entry('a',100),entry('b',150),entry('c',150)],definitions);assert.deepEqual(g[0].leaders.map(x=>x.id),['b','c']);assert.deepEqual(g[0].history.map(x=>x.id),['a']);});
+test('separatesUnitsAndDivisions',async()=>{const {groupRecords}=await load();const g=groupRecords([entry('a',100),entry('b',200,{divisionId:'masters'}),entry('invalid',400,{unit:'reps'})],definitions);assert.equal(g.length,2);assert.deepEqual(g.flatMap(x=>x.leaders).map(x=>x.id),['a','b']);});
+test('ranksLowerTime',async()=>{const {groupRecords}=await load();const g=groupRecords([entry('a',120,{definitionId:'row'}),entry('b',95,{definitionId:'row'})],definitions);assert.equal(g[0].leaders[0].id,'b');});
+test('handlesEmptyAndInvalid',async()=>{const {groupRecords}=await load();assert.deepEqual(groupRecords([],definitions),[]);assert.deepEqual(groupRecords([entry('a',NaN),entry('b',-1),entry('c',Infinity),entry('d',12,{definitionId:'unknown'}),entry('e',10,{achievedOn:'not-a-date'})],definitions),[]);});
