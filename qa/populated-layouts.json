@@ -1,0 +1,102 @@
+[
+  {
+    "overflow": false,
+    "page": "index",
+    "width": 320
+  },
+  {
+    "overflow": false,
+    "page": "story",
+    "width": 320
+  },
+  {
+    "overflow": false,
+    "page": "coaches",
+    "width": 320
+  },
+  {
+    "overflow": false,
+    "page": "board",
+    "width": 320
+  },
+  {
+    "overflow": false,
+    "page": "index",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "page": "story",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "page": "coaches",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "page": "board",
+    "width": 390
+  },
+  {
+    "overflow": false,
+    "page": "index",
+    "width": 768
+  },
+  {
+    "overflow": false,
+    "page": "story",
+    "width": 768
+  },
+  {
+    "overflow": false,
+    "page": "coaches",
+    "width": 768
+  },
+  {
+    "overflow": false,
+    "page": "board",
+    "width": 768
+  },
+  {
+    "overflow": false,
+    "page": "index",
+    "width": 1024
+  },
+  {
+    "overflow": false,
+    "page": "story",
+    "width": 1024
+  },
+  {
+    "overflow": false,
+    "page": "coaches",
+    "width": 1024
+  },
+  {
+    "overflow": false,
+    "page": "board",
+    "width": 1024
+  },
+  {
+    "overflow": false,
+    "page": "index",
+    "width": 1440
+  },
+  {
+    "overflow": false,
+    "page": "story",
+    "width": 1440
+  },
+  {
+    "overflow": false,
+    "page": "coaches",
+    "width": 1440
+  },
+  {
+    "overflow": false,
+    "page": "board",
+    "width": 1440
+  }
+]
